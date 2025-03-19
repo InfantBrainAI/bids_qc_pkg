@@ -1,0 +1,27 @@
+[project]
+name = "bids-qc-pkg"
+version = "0.1.0"
+description = "BIDS Quality Control Package"
+requires-python = ">=3.7"
+dependencies = [
+    "numpy",
+    "nibabel",
+    "pandas",
+    "matplotlib",
+    "seaborn",
+]
+
+[build-system]
+requires = ["setuptools>=64.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["bids_qc_pkg"]
+
+[project.entry-points."console_scripts"]
+bids-qc-initial-struct = "bids_qc_pkg.struct.struct_pipeline_initial:main"
+bids-qc-final-struct   = "bids_qc_pkg.struct.struct_pipeline_final:main"
+bids-qc-report-struct  = "bids_qc_pkg.struct.struct_report_generator:main"
+bids-qc-annotate-struct = "bids_qc_pkg.struct.struct_generate_html_reports:main"
+bids-qc-fmri-qc       = "bids_qc_pkg.fmri.fmri_test_run:main" 
